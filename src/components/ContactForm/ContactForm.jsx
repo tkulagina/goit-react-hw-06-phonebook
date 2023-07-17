@@ -19,7 +19,7 @@ export const ContactForm = () => {
   const contacts = useSelector(state => state.contacts);
   return (
     <form
-      className={css.form}
+      className={css.wrapper}
       onSubmit={e => {
         e.preventDefault();
         if (
