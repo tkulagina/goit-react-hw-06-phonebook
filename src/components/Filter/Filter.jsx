@@ -7,7 +7,8 @@ export const Filter = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <label htmlFor="">
+      <div className={css.wrapper}>
+      <label htmlFor="" className={css.label}>
         <span>Find contacts by name</span>
       </label>
       <input
@@ -18,6 +19,7 @@ export const Filter = () => {
         name="filter"
         placeholder="Find contacts by name"
       />
+      </div>
     </>
-  );
+  )
 };

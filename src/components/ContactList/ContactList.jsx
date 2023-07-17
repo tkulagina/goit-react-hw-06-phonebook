@@ -7,8 +7,8 @@ export const ContactList = ({ listContact }) => {
   const dispatch = useDispatch();
   return listContact.map(cont => {
     return (
-      <p key={cont.id} className={css.listItem}>
-        <span className={css.phone}>
+      <p key={cont.id} className={css.list}>
+        <span className={css.text}>
           {cont.name}: {cont.number}
         </span>
         <button
