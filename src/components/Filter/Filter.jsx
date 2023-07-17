@@ -1,22 +1,23 @@
-import PropTypes from 'prop-types';
-import css from '../Form/Form.module.css';
+import css from './Filter.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { qwery } from 'redux/sliceFilter';
 
-export const Filter = ({ handlerFilter }) => {
+export const Filter = () => {
+  const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
   return (
-    <form className={css.wrapper}>
-      <label className={css.label}>
-        Find Contacts by name
-        <input
-          className={css.input}
-          type="text"
-          name="name"
-          onChange={handlerFilter}
-        />
+    <>
+      <label htmlFor="">
+        <span>Find contacts by name</span>
       </label>
-    </form>
+      <input
+        className={css.input}
+        value={filter}
+        onChange={evt => dispatch(qwery(evt.currentTarget.value))}
+        type="text"
+        name="filter"
+        placeholder="Find contacts by name"
+      />
+    </>
   );
-};
-
-Filter.propTypes = {
-  handlerFilter: PropTypes.func.isRequired,
 };
