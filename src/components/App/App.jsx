@@ -16,10 +16,10 @@ export const App = () => {
   };
 
   return (
-    <div className={css.container}>
-      <h1>Phonebook</h1>
+    <div className={css.wrapper}>
+      <h1 className={css.mainTitle }>Phonebook</h1>
       <ContactForm />
-      <h2>Contacts</h2>
+      <h2 className={css.title }>Contacts</h2>
       <Filter />
       <ContactList listContact={filterContact()} />
     </div>
