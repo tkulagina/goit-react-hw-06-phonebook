@@ -1,11 +1,24 @@
-import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
+
 import { useDispatch } from 'react-redux';
 import { remove } from 'redux/sliceContact';
+import { useSelector } from 'react-redux';
 
-export const ContactList = ({ listContact }) => {
+
+export const ContactList = () => {
+ 
   const dispatch = useDispatch();
-  return listContact.map(cont => {
+  const filtered = useSelector(state => state.filter);
+  const contacts = useSelector(state => state.contacts);
+
+  const normalizedFilter = filtered.toLowerCase();
+  const filteredContacts = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(normalizedFilter)
+  );
+
+
+
+  return filteredContacts.map(cont => {
     return (
       <p key={cont.id} className={css.list}>
         <span className={css.text}>
@@ -25,6 +38,3 @@ export const ContactList = ({ listContact }) => {
   });
 };
 
-ContactList.propTypes = {
-  listContact: PropTypes.array.isRequired,
-};

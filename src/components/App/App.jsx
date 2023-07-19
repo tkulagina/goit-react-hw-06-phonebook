@@ -2,18 +2,10 @@ import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 import { ContactForm } from '../ContactForm/ContactForm';
 import css from './App.module.css';
-import { useSelector } from 'react-redux';
+
 
 export const App = () => {
-  const filtered = useSelector(state => state.filter);
-  const contacts = useSelector(state => state.contacts);
-
-  const filterContact = e => {
-    const filteredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filtered.toLowerCase())
-    );
-    return filteredContacts;
-  };
+ 
 
   return (
     <div className={css.wrapper}>
@@ -21,7 +13,7 @@ export const App = () => {
       <ContactForm />
       <h2 className={css.title }>Contacts</h2>
       <Filter />
-      <ContactList listContact={filterContact()} />
+      <ContactList />
     </div>
   );
 };
