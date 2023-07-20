@@ -1,10 +1,15 @@
-import css from './Filter.module.css';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { qwery } from 'redux/sliceFilter';
+import { getFilter, setFilter } from 'redux/sliceFilter';
+import css from './Filter.module.css';
 
 export const Filter = () => {
-  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+
+  const onChange = e => {
+    dispatch(setFilter(e.target.value));
+  };
   return (
     <>
       <div className={css.wrapper}>
@@ -14,7 +19,7 @@ export const Filter = () => {
       <input
         className={css.input}
         value={filter}
-        onChange={evt => dispatch(qwery(evt.currentTarget.value))}
+        onChange={onChange}
         type="text"
         name="filter"
         placeholder="Find contacts by name"
@@ -22,4 +27,9 @@ export const Filter = () => {
       </div>
     </>
   )
+};
+
+Filter.propTypes = {
+  filter: PropTypes.string,
+  OnChange: PropTypes.func,
 };

@@ -4,8 +4,7 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import css from './App.module.css';
 
 
-export const App = () => {
- 
+export const App = () => { 
 
   return (
     <div className={css.wrapper}>

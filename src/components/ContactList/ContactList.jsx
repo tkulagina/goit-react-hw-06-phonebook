@@ -1,9 +1,7 @@
-import css from './ContactList.module.css';
-
 import { useDispatch } from 'react-redux';
 import { remove } from 'redux/sliceContact';
 import { useSelector } from 'react-redux';
-
+import css from './ContactList.module.css';
 
 export const ContactList = () => {
  
@@ -15,8 +13,6 @@ export const ContactList = () => {
   const filteredContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter)
   );
-
-
 
   return filteredContacts.map(cont => {
     return (
