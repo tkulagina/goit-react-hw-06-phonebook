@@ -1,17 +1,18 @@
-import { useDispatch } from 'react-redux';
-import { remove } from 'redux/sliceContact';
-import { useSelector } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
+import { remove, getContacts } from 'redux/sliceContact';
+import { getFilter } from 'redux/sliceFilter';
+
 import css from './ContactList.module.css';
 
 export const ContactList = () => {
  
   const dispatch = useDispatch();
-  const filtered = useSelector(state => state.filter);
-  const contacts = useSelector(state => state.contacts);
+  const filtered = useSelector(getFilter);
+  const contacts = useSelector(getContacts);
+  console.log (contacts);
 
-  const normalizedFilter = filtered.toLowerCase();
   const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter)
+  name.toLowerCase().includes(filtered.toLowerCase())
   );
 
   return filteredContacts.map(cont => {
